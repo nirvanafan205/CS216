@@ -28,52 +28,12 @@ int main()
 
 
 	cout << "\nHow many adult tickets were sold? \n";
-
-	char adult_tickets_input;
-	vector<char>adult_tickets;
-
-	while(adult_tickets_input = getchar() )
-	{
-		if(adult_tickets_input == EOF || adult_tickets_input == 10)
-		{
-			break;
-		}
-
-		else if(adult_tickets_input < 48 || adult_tickets_input > 57)
-		{
-			die("input error");
-		}
-
-		else
-		{
-			adult_tickets.push_back(adult_tickets_input);
-		}
-	}
-
-
+	int adult_tickets;
+	cin >> adult_tickets;
 
 	cout << "\nHow many child tickets were sold? \n";
-
-	char child_tickets_input;
-	vector<char>child_tickets;
-
-	while(child_tickets_input = getchar() )
-	{
-		if(child_tickets_input == EOF || child_tickets_input == 10)
-		{
-			break;
-		}
-
-		else if(child_tickets_input < 48 || child_tickets_input > 57)
-		{
-			die("input error");
-		}
-
-		else
-		{
-			child_tickets.push_back(child_tickets_input);
-		}
-	}
+	int child_tickets;
+	cin>> child_tickets;
 
 	cout << "Movie Name:	";
 
@@ -82,21 +42,8 @@ int main()
 		cout << *i;
 	}
 
-	cout << "\n";
-
-	for(auto i = adult_tickets.begin(); i !=  adult_tickets.cend(); ++i)
-	{
-		cout << *i;
-	}
-
-	cout << "\n";
-
-	for(auto i = child_tickets.begin(); i !=  child_tickets.cend(); ++i)
-	{
-		cout << *i;
-	}
-
-	cout << "\n";
+	cout << "\nAdult Tickets Sold:	" << adult_tickets;
+	cout << "\nChild Tickets Sold:	" << child_tickets;
 }
 
 bool die(const string & msg)
