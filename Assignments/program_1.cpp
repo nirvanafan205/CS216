@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void discounts(int price, int room_amount, int days);
+void discounts(int price, int room_amount, int days, double tax);
 
 int main()
 {
@@ -18,17 +18,31 @@ int main()
 	int days;
 	cin >> days;
 
-	discounts(price, room_amount, days);
+	cout <<"\nWhat is the tax %?\n";
+	double tax;
+	cin >> tax;
+	tax /= 100;
+
+
+	discounts(price, room_amount, days, tax);
 }
 
-void discounts(int price, int room_amount, int days)
+void discounts(int price, int room_amount, int days, double tax)
 {
-	int total = price * room_amount;
+	double taxe = (price * room_amount) * tax;
+
+	int total = (price * room_amount) + taxe;
+
+	int room_total = price * room_amount;
 
 	if(room_amount < 10 && days < 3)
 	{
-		cout << "Cost of renting one room: " << price;
-		cout << "No discount: 0%";
-		cout << "Number of rooms booked: " << room_amount;
+		cout << "\nCost of renting one room: " << price;
+		cout << "\nNo discount: 0%";
+		cout << "\nNumber of rooms booked: " << room_amount;
+		cout << "\ntotal cost of the rooms: " << room_total;
+		cout << "\nsales tax: " << taxe;
+		cout << "\ntotal billing: " << total;
+		cout <<"\n";
 	}	
 }
