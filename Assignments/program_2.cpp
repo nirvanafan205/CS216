@@ -11,10 +11,10 @@ int main()
 	ofstream writeFile;
 
 	string lastName, firstName;
+	double salary, raise;
 
 	readFile.open("employeeInput.txt");
 	writeFile.open("employeeOutput.txt");
-	writeFile << "Writing ... \n";
 
 	if(!readFile)
 	{
@@ -23,10 +23,22 @@ int main()
 
 	else
 	{
-		while(readFile >> input)
+		while(readFile)
 		{
-			cout << input << "\n";
-			writeFile << input << "\n";
+			if(!readFile)
+			{
+				break;
+			}
+
+			readFile >> lastName;
+			readFile >> firstName;
+			readFile >> salary;
+			readFile >> raise;
+			raise /= 100;
+
+			salary = (raise * salary) + salary;
+
+			writeFile << firstName << " " << lastName << "	" << salary << "\n";
 		}
 	}
 }
