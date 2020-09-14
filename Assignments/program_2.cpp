@@ -25,21 +25,24 @@ int main()
 	{
 		while(readFile)
 		{
+			readFile >> lastName;
+			readFile >> firstName;
+			readFile >> salary;
+			readFile >> raise;
+
+			raise /= 100;
+
+			salary = (raise * salary) + salary;
+
 			if(!readFile)
 			{
 				break;
 			}
 
-			readFile >> lastName;
-			readFile >> firstName;
-			readFile >> salary;
-			readFile >> raise;
-			raise /= 100;
-
-			salary = (raise * salary) + salary;
-
 			writeFile << firstName << " " << lastName << "	" << salary << "\n";
 		}
+
+		cout << "File has been written" << endl;
 	}
 }
 
