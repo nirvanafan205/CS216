@@ -1,11 +1,12 @@
 /*
    Design an Inventory class that can hold information for an item in a retail store’s inventory.
-   The class should have the following private member variables.
+   The class should have private member variables.
    This program should validate
    the user inputs to ensure that negative values are not accepted for item number, quantity, or cost.
 */
 
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -42,18 +43,30 @@ void Inventory::setZeros(int number, int amount, double price)
 	cost = price;
 }
 
+void information(Inventory&);
 
-void input(Inventory &item);
+void showValues(Inventory);
+
+bool die(const string & msg);
 
 int main()
 {
 	Inventory input;
 
+	information(input);
 
+	showValues(input);
 }
 
+void showValues(Inventory item)
+{
+	cout << fixed << showpoint << setprecision(2) << endl;
+	cout << "data number: " << item.getNum() << endl;
+	cout << "item amount: " << item.getAmount() << endl;
+	cout << "price: " << item.getPrice() << endl;
+}
 
-void input(Inventory &item)
+void information(Inventory &item)
 {
 	int num;
 	int amount;
@@ -69,4 +82,17 @@ void input(Inventory &item)
 
 	cout << "Wholesale per-unit cost" << endl;
 	cin >> price;
+
+	if(num < 0 || amount < 0 || price < 0)
+	{
+		die("No negative inputs allowed");
+	}
+
+	item.setZeros(num, amount, price);
+}
+
+bool die(const string & msg)
+{
+	cout << "Fatal error: " << msg << endl;
+	exit(EXIT_FAILURE);
 }
