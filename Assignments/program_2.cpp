@@ -1,98 +1,55 @@
-/*
-   Design an Inventory class that can hold information for an item in a retail store’s inventory.
-   The class should have private member variables.
-   This program should validate
-   the user inputs to ensure that negative values are not accepted for item number, quantity, or cost.
-*/
-
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
-class Inventory
-{
-	private:
-		int itemNumber;
-		int quantity;
-		double cost;
-
-	public:
-		void setZeros(int number, int amount, double price);
-
-		int getNum()
-		{
-			return itemNumber;
-		}
-
-		int getAmount()
-		{
-			return quantity;
-		}
-
-		double getPrice()
-		{
-			return cost;
-		}
-};
-
-void Inventory::setZeros(int number, int amount, double price)
-{
-	itemNumber = number;
-	quantity = amount;
-	cost = price;
-}
-
-void information(Inventory&);
-
-void showValues(Inventory);
-
-bool die(const string & msg);
+void bubbleSort(int sort[], int size);
+void selectionSort();
 
 int main()
 {
-	Inventory input;
+	int bubble_array[] = { 8, 14, 6, 16, 10, 12, 4, 2};
+	int selection_array[] = { 8, 14, 6, 16, 10, 12, 4, 2};
 
-	information(input);
+	int end = (sizeof(bubble_array) / sizeof(bubble_array[0]) ) - 1;
 
-	showValues(input);
-}
-
-void showValues(Inventory item)
-{
-	cout << fixed << showpoint << setprecision(2) << endl;
-	cout << "data number: " << item.getNum() << endl;
-	cout << "item amount: " << item.getAmount() << endl;
-	cout << "price: " << item.getPrice() << endl;
-}
-
-void information(Inventory &item)
-{
-	int num;
-	int amount;
-	double price;
-
-	cout << "Enter data" << endl;
-
-	cout << "Item number" << endl;
-	cin >> num;
-
-	cout << "Quantity on hand" << endl;
-	cin >> amount;
-
-	cout << "Wholesale per-unit cost" << endl;
-	cin >> price;
-
-	if(num < 0 || amount < 0 || price < 0)
+	for(int i = 0; i <= end; i++)
 	{
-		die("No negative inputs allowed");
+		if(i == end)
+		{
+			cout << bubble_array[i] << endl;
+		}
+
+		else 
+		{
+			cout << bubble_array[i] << ", ";
+		}
 	}
 
-	item.setZeros(num, amount, price);
+	bubbleSort(bubble_array, end);
 }
 
-bool die(const string & msg)
+void bubbleSort(int sort[], int size)
 {
-	cout << "Fatal error: " << msg << endl;
-	exit(EXIT_FAILURE);
+	for(int i = 0; i < size - 1; i++)
+	{
+		for(int j = 0; j < size - i - 1; j++)
+		{
+			if(sort[j] > sort[j + 1])
+			{
+				int temp = sort[j];
+				sort[j] = sort[j + 1];
+				sort[j + 1] = temp;
+			}
+		}
+	}
+
+	for(int nums : sort[])
+	{
+		cout << nums;
+	}
+}
+
+void selectionSort()
+{
+
 }
