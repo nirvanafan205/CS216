@@ -40,8 +40,10 @@ int main()
 		}
 	}
 
-	selectionSort(selection_array, end);
 
+	int n = sizeof(selection_array)/sizeof(selection_array[0]);  
+
+	selectionSort(selection_array, n);
 }
 
 void bubbleSort(int sort[], int size)
@@ -73,7 +75,35 @@ void bubbleSort(int sort[], int size)
 	}
 }
 
-void selectionSort(int sort[], int size)
-{
+void selectionSort(int arr[], int n)  
+{  
+	for(int i = 0; i < n - 1; i++)  
+	{  
+		int min_idx = i;  
 
-}
+		for (int j = i + 1; j < n; j++)  
+		{
+			if (arr[j] < arr[min_idx])  
+			{
+				min_idx = j;  
+			}
+		}
+
+		int temp = arr[min_idx];
+		arr[min_idx] = arr[i];
+		arr[i] = temp;
+	}  
+
+	for(int b = 0; b < n; b++)
+	{
+		if(b == n - 1)
+		{
+			cout << arr[b] << endl;
+		}
+
+		else 
+		{
+			cout << arr[b] << ", ";
+		}
+	}
+}  
