@@ -24,6 +24,19 @@ class DayOfYear
 
 	int day;
 
+	static string JANUARY = "January";
+	static string FEBRUARY = "February";
+	static string MARCH = "March";
+	static string APRIL = "April";
+	static string MAY = "May";
+	static string JUNE = "June";
+	static string JULY = "July";
+	static string AUGUST = "August";
+	static string SEPTEMBER = "September";
+	static string OCTOBER = "October";
+	static string NOVEMBER = "November";
+	static string DECEMBER = "December";
+
 	DayOfYear(int number)
 	{
 		day = number;
@@ -34,85 +47,73 @@ class DayOfYear
 		string month;
 		if(day > 0 && day < 32)
 		{
-			month = "January";
-			cout << month << " " << day << endl;
+			cout << JANUARY << " " << day << endl;
 		}
 
 		else if(day > 31 && day < 61)
 		{
-			month = "February";
 			day -= 31;
-			cout << month << " " << day << endl;
+			cout << FEBRUARY << " " << day << endl;
 		}
 
 		else if(day > 60 && day < 92)
 		{
-			month = "March";
 			day -= 60;
-			cout << month << " " << day << endl;
+			cout << MARCH << " " << day << endl;
 		}
 
 		else if(day > 91 && day < 122)
 		{
-			month = "April";
 			day -= 91;
-			cout << month << " " << day << endl;
+			cout << APRIL << " " << day << endl;
 		}
 
 		else if(day > 121 && day < 153)
 		{
-			month = "May";
 			day -= 121;
-			cout << month << " " << day << endl;
+			cout << MAY << " " << day << endl;
 		}
 
 		else if(day > 152 && day < 183)
 		{
-			month = "June";
 			day -= 152;
-			cout << month << " " << day << endl;
+			cout << JUNE  << " " << day << endl;
 		}
 
 		else if(day > 182 && day < 214)
 		{
-			month = "July";
 			day -= 182;
-			cout << month << " " << day << endl;
+			cout << JULY << " " << day << endl;
 		}
 
 		else if(day > 213 && day < 245)
 		{
-			month = "August";
 			day -= 213;
-			cout << month << " " << day << endl;
+			cout << AUGUST << " " << day << endl;
 		}
 
 		else if(day > 244 && day < 275)
 		{
-			month = "September";
 			day -= 244;
-			cout << month << " " << day << endl;
+			cout << SEPTEMBER << " " << day << endl;
 		}
 
 		else if(day > 274 && day < 306)
 		{
-			month = "October";
 			day -= 274;
-			cout << month << " " << day << endl;
+			cout << OCTOBER << " " << day << endl;
 		}
 
 		else if(day > 305 && day < 336)
 		{
-			month = "November";
 			day -= 305;
-			cout << month << " " << day << endl;
+			cout << NOVEMBER << " " << day << endl;
 		}
 
 		else if(day > 335 && day < 367)
 		{
-			month = "December";
 			day -= 335;
-			cout << month << " " << day << endl;	
+			cout << DECEMBER << " " << day << endl;	
 		}
 
 		else
