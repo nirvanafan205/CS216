@@ -10,7 +10,8 @@
   and should have static member variables of type string to assist in the translation from
   the integer format to the month–day format.
   Test your class by inputting various integers representing days and printing out their representation in the month–day format.
-  */
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -23,12 +24,12 @@ class DayOfYear
 
 	int day;
 
-	DayOfYear(int number)~
+	DayOfYear(int number)
 	{
-		day = number		
+		day = number;
 	}
 
-	void print(int day)
+	void print()
 	{
 		string month;
 		if(day > 0 && day < 32)
@@ -129,11 +130,9 @@ int main()
 
 	cin >> num;
 
-	DayOfYear caller;
-
 	DayOfYear caller(num);
 
-	caller.print(num);
+	caller.print();
 }
 
 bool die(const string & msg)
