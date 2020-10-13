@@ -22,7 +22,11 @@ class DayOfYear
 	public: 
 
 	int day;
-	void initialize(int);
+
+	DayOfYear(int number)~
+	{
+		day = number		
+	}
 
 	void print(int day)
 	{
@@ -117,11 +121,6 @@ class DayOfYear
 	}
 };
 
-void DayOfYear::initialize(int number)
-{
-	number = day;
-}
-
 int main()
 {
 	cout << "This program converts a day given by a number 1 through 365 into a month and a day." << endl << "Enter a number: ";
@@ -132,7 +131,7 @@ int main()
 
 	DayOfYear caller;
 
-	caller.initialize(num);
+	DayOfYear caller(num);
 
 	caller.print(num);
 }
