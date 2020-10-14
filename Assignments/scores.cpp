@@ -58,6 +58,8 @@ int main()
 	cout << endl;
 
 	average(nums, size);
+
+	delete[] nums;
 }
 
 void sort(double nums[], int amount)
