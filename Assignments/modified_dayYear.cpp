@@ -1,3 +1,11 @@
+/*
+ Modify the DayOfYear class, written in an earlier Programming Challenge, to add a
+constructor that takes two parameters: a string representing a month and an integer in the
+range 0 through 31 representing the day of the month. The constructor should then initialize
+the integer member of the class to represent the day speciﬁed by the month and day of month
+parameters. The constructor should terminate the program with an appropriate error
+message if the number entered for a day is outside the range of days for the month given.
+ */
 #include <iostream>
 
 using namespace std;
@@ -25,70 +33,29 @@ class DayOfYear
 			{
 				die("date does not exist");
 			}
+
+			else if( (day < 0 || day > 31) && (mo == "January" || mo == "March" || mo == "May" || mo == "July" || mo == "August" || mo == "October" || mo == "December")  )
+			{
+				die("date does not exist");
+			}
 		}
 
-		void print()
+		void operator+()
 		{
-			if(mo == "January")
-			{
-				cout << mo  << endl;
-			}
+			++day;
 
-			else if(mo == "February")
-			{
-				cout << mo  << endl;
-			}
+			cout << "\nThe day after is " << mo << " " << day << endl;
 
-			else if(mo == "March")
-			{
-				cout << mo  << endl;
-			}
+			--day;
+		}
 
-			else if(mo == "April")
-			{
-				cout << mo  << endl;
-			}
+		void operator-()
+		{
+			--day;	
 
-			else if(mo == "May")
-			{
-				cout << mo  << endl;
-			}
+			cout << "\nThe day before is " << mo << " " << day << endl;
 
-			else if(mo == "June")
-			{
-				cout << mo  << endl;
-			}
-
-			else if(mo == "July")
-			{
-				cout << mo  << endl;
-			}
-
-			else if(mo == "August")
-			{
-				cout << mo  << endl;
-			}
-
-			else if(mo == "September")
-			{
-				cout << mo  << endl;
-			}
-
-			else if(mo == "October")
-			{
-				cout << mo  << endl;
-			}
-
-			else if(mo == "November")
-			{
-				cout << mo  << endl;
-			}
-
-			else if(mo == "December")
-			{
-				cout << mo << endl;	
-			}
-
+			++day;
 		}
 };
 
@@ -105,8 +72,9 @@ int main()
 	cin >> num;
 
 	DayOfYear caller(num , m );
-
-	caller.print();
+	
+	+caller;
+	-caller;
 }
 
 bool die(const string & msg)
