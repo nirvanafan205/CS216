@@ -21,8 +21,12 @@ int main()
 	while(*numbers != '\0')
 	{
 		cout << *numbers;
+
+		sum += *numbers - 48;
+
 		numbers++;
 
 	}
 
+	cout << endl << sum << endl;
 }
