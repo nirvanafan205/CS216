@@ -49,7 +49,7 @@ int main()
 	{
 		inOutFile.get(ch);
 
-		if(ch != ' ')
+		if(ch != ' ' && ch != 10)
 		{
 			check = ch;
 		}
