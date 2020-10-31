@@ -41,8 +41,8 @@ int main()
 	}
 
 	char ch;
-	char check;
-	char temp;
+	char check = 'a';
+	char temp  ='a';
 	int count = 0;
 
 	while(inOutFile)

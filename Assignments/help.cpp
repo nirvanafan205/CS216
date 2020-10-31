@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	fstream File;
-	char Char;
+	char Char = 'a';
 	char ASCII[128] = {0}; 
 	int frequency[128];
 	string input;
