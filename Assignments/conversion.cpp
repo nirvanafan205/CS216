@@ -25,7 +25,7 @@ void sign(int n)
 	}
 }
 
-//Convert bellow comments function to use recursion 
+//Convert below comments function to use recursion 
 
 /*
 	void sign(int n)

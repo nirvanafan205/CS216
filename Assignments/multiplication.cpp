@@ -9,26 +9,25 @@ CS 216
 
 using namespace std;
 
-void mult(int x, int y);
+int mult(int x, int y);
 
 int main()
 {
 	int x = 7;
 	int y = 4;
 
-	mult(x, y);
+	cout << mult(x, y) << endl;
 }
 
-void mult(int x, int y)
+int mult(int x, int y)
 {
-	if(x > 1)
+	if(x == 1)
 	{
-		cout << y << endl;
-		mult(x - 1, y + 4);
+		return y;
 	}
 
 	else
 	{
-		cout << y << endl;
+		return y + mult(x - 1, y);
 	}
 }
