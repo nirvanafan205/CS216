@@ -45,16 +45,16 @@ void sort(vector<int>& sorted)
 	{
 		if(i == 0)
 		{
-			int temp = sorted[size];
-			sorted[size] = sorted[i];
+			int temp = sorted[size - 1];
+			sorted[size - 1] = sorted[i];
 			sorted[i] = temp;
 		}
 		
 		else if( i < size)
 		{
-			int temp = sorted[i - 1];
-			sorted[i - 1] = sorted[i];
-			sorted[i] = temp;
+			int temp = sorted[size - (i + 1)];
+			sorted[size - (i + 1)] = sorted[0];
+			sorted[0] = temp;
 		}
 	}
 }
@@ -65,4 +65,6 @@ void output(vector<int>& out)
 	{
 		cout << out[b] << endl;
 	}	
+
+	cout << endl;
 }
