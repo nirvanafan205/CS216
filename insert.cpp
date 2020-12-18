@@ -5,62 +5,62 @@ using namespace std;
 
 class LinkedList
 {
-	protected:
-		struct ListNode
+protected:
+	struct ListNode
+	{
+		double value;
+		ListNode* next;
+
+		ListNode(double value1, ListNode* next1 = NULL)
 		{
-			double value;
-			ListNode *next;
+			value = value1;
+			next = next1;
+		}
+	};
 
-			ListNode(double value1, ListNode *next1 = NULL)
-			{
-				value = value1;
-				next = next1;
-			}
-		};
+	ListNode* head;
+public:
+	LinkedList()
+	{
+		head = NULL;
+	}
 
-		ListNode *head;
-	public:
-		LinkedList() 
-		{ 
-			head = NULL;
-	       	}
+	~LinkedList();
 
-		~LinkedList();
+	void add(double x);
 
-		void add(double x);
+	void remove(double x);
 
-		void remove(double x);
+	bool isMember(double x);
 
-		bool isMember(double x);
+	int search(double x);
 
-		int search(double x);
+	void insert(double x, int position);
 
-		void insert(double x, int position);
+	void print();
 
-		void print();
+	LinkedList(const LinkedList& original);
 
-		LinkedList(const LinkedList& original);
+private:
 
-	private:
-
-		static ListNode *copyList(ListNode *aList);
+	static ListNode* copyList(ListNode* aList);
 };
 
 LinkedList::~LinkedList()
 {
-	ListNode *aptr = head;
+	ListNode* aptr = head;
 
-	while(aptr != NULL)
+	while (aptr != NULL)
 	{
-		ListNode *trash = aptr;
-		aptr =  aptr->next;
+		ListNode* trash = aptr;
+		aptr = aptr->next;
 		delete trash;
 	}
 }
 
 void LinkedList::add(double x)
 {
-	if(head == NULL)
+	if (head == NULL)
 	{
 		head = new ListNode(x);
 	}
@@ -73,14 +73,14 @@ void LinkedList::add(double x)
 
 void LinkedList::remove(double x)
 {
-	ListNode *aptr, *prev;
+	ListNode* aptr, * prev;
 
-	if(head == NULL)
+	if (head == NULL)
 	{
 		return;
 	}
 
-	if(head->value == x)
+	if (head->value == x)
 	{
 		aptr = head;
 		head = head->next;
@@ -91,14 +91,15 @@ void LinkedList::remove(double x)
 	{
 		aptr = head;
 
-		while(aptr != NULL && aptr->value != x)
+		while (aptr != NULL && aptr->value != x)
 		{
 			prev = aptr;
 			aptr = aptr->next;
 		}
 
-		if(aptr)
+		if (aptr)
 		{
+			prev = head;
 			prev->next = aptr->next;
 			delete aptr;
 		}
@@ -107,18 +108,18 @@ void LinkedList::remove(double x)
 
 bool LinkedList::isMember(double x)
 {
-	if(head == NULL)
+	if (head == NULL)
 	{
 		return false;
 	}
 
 	else
 	{
-		ListNode *aptr = head;
+		ListNode* aptr = head;
 
-		while(aptr != NULL)
+		while (aptr != NULL)
 		{
-			if(aptr->value == x)
+			if (aptr->value == x)
 				return true;
 			aptr = aptr->next;
 		}
@@ -129,7 +130,7 @@ bool LinkedList::isMember(double x)
 
 int LinkedList::search(double x)
 {
-	if(head == NULL)
+	if (head == NULL)
 	{
 		return -1;
 	}
@@ -138,11 +139,11 @@ int LinkedList::search(double x)
 	{
 		int count = 0;
 
-		ListNode *aptr = head;
+		ListNode* aptr = head;
 
-		while(aptr != NULL)
+		while (aptr != NULL)
 		{
-			if(aptr->value == x)
+			if (aptr->value == x)
 				return count;
 			aptr = aptr->next;
 			count++;
@@ -155,11 +156,11 @@ int LinkedList::search(double x)
 
 void LinkedList::insert(double x, int position)
 {
-	ListNode *aptr, *prev;
+	ListNode* aptr, * prev;
 
 	int count = 0;
 
-	if(head == NULL)
+	if (head == NULL)
 	{
 		head = new ListNode(x);
 	}
@@ -168,22 +169,22 @@ void LinkedList::insert(double x, int position)
 	{
 		aptr = head;
 
-		while(aptr != NULL && count != position)
+		while (aptr != NULL && count != position)
 		{
 			prev = aptr;
 			aptr = aptr->next;
 			count++;
 		}
-
+		prev = head;
 		prev->next = new ListNode(x, aptr);
 	}
 }
 
 void LinkedList::print()
 {
-	ListNode *aptr = head;
+	ListNode* aptr = head;
 
-	while(aptr != NULL)
+	while (aptr != NULL)
 	{
 		cout << aptr->value << " ";
 		aptr = aptr->next;
@@ -199,14 +200,14 @@ LinkedList::LinkedList(const LinkedList& original)
 
 LinkedList::ListNode* LinkedList::copyList(ListNode* aList)
 {
-	if(aList == NULL)
+	if (aList == NULL)
 	{
 		return NULL;
 	}
 
 	else
 	{
-		ListNode *tailCopy = copyList(aList->next);
+		ListNode* tailCopy = copyList(aList->next);
 
 		return new ListNode(aList->value, tailCopy);
 	}
@@ -216,7 +217,7 @@ int main()
 {
 	LinkedList list;
 
-	for(int i = 1; i <= 11; i++)
+	for (int i = 1; i <= 11; i++)
 	{
 		list.add(i * 3.14);
 	}
@@ -232,4 +233,6 @@ int main()
 	cout << "\nThese are the values of the list:\n";
 	list.print();
 
+
+	system("Pause");
 }
