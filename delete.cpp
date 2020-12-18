@@ -5,48 +5,48 @@ using namespace std;
 
 class LinkedList
 {
-	protected:
-		struct ListNode
+protected:
+	struct ListNode
+	{
+		double value;
+
+		ListNode* next;
+
+		ListNode(double value1, ListNode* next1 = NULL)
 		{
-			double value;
+			value = value1;
+			next = next1;
+		}
+	};
 
-			ListNode *next;
+	ListNode* head;
+public:
+	LinkedList()
+	{
+		head = NULL;
+	}
 
-			ListNode(double value1, ListNode *next1 = NULL)
-			{
-				value = value1;
-				next = next1;
-			}
-		};
+	LinkedList(const LinkedList& original);
 
-		ListNode *head;
-	public:
-		LinkedList()
-		{ 
-			head = NULL; 
-		} 
+	~LinkedList();
 
-		LinkedList(const LinkedList& original);
+	void add(double x);
 
-		~LinkedList();
+	void remove(double x);
 
-		void add(double x);
+	void remove(int position);
 
-		void remove(double x);
+	bool isMember(double x);
 
-		void remove(int position);
+	int search(double x);
 
-		bool isMember(double x);
+	void insert(double x, int position);
 
-		int search(double x);
+	void print();
 
-		void insert(double x, int position);
+private:
 
-		void print();
-
-	private:
-
-		static ListNode *copyList(ListNode *aList);
+	static ListNode* copyList(ListNode* aList);
 };
 
 LinkedList::LinkedList(const LinkedList& original)
@@ -54,16 +54,16 @@ LinkedList::LinkedList(const LinkedList& original)
 	head = copyList(original.head);
 }
 
-LinkedList::ListNode *LinkedList::copyList(ListNode *aList)
+LinkedList::ListNode* LinkedList::copyList(ListNode* aList)
 {
-	if(aList == NULL)
+	if (aList == NULL)
 	{
 		return NULL;
 	}
 
 	else
 	{
-		ListNode *tailCopy = copyList(aList->next);
+		ListNode* tailCopy = copyList(aList->next);
 
 		return new ListNode(aList->value, tailCopy);
 	}
@@ -71,11 +71,11 @@ LinkedList::ListNode *LinkedList::copyList(ListNode *aList)
 
 LinkedList::~LinkedList()
 {
-	ListNode *aptr = head;
+	ListNode* aptr = head;
 
-	while(aptr != NULL)
+	while (aptr != NULL)
 	{
-		ListNode *extra = aptr;
+		ListNode* extra = aptr;
 		aptr = aptr->next;
 		delete extra;
 	}
@@ -83,7 +83,7 @@ LinkedList::~LinkedList()
 
 void LinkedList::add(double x)
 {
-	if(head == NULL)
+	if (head == NULL)
 	{
 		head = new ListNode(x);
 	}
@@ -96,10 +96,9 @@ void LinkedList::add(double x)
 
 void LinkedList::remove(double x)
 {
-	ListNode *new_ = 0;
-	ListNode *old = 0;
+	ListNode* new_, * old;
 
-	if(head == NULL)
+	if (head == NULL)
 	{
 		return;
 	}
@@ -112,9 +111,10 @@ void LinkedList::remove(double x)
 			old = new_;
 			new_ = new_->next;
 		}
-
+		
 		if(new_)
 		{
+			old = head;
 			old->next = new_->next;
 			delete new_;
 		}
@@ -123,12 +123,12 @@ void LinkedList::remove(double x)
 
 void LinkedList::remove(int position)
 {
-	if(head == NULL)
+	if (head == NULL)
 	{
 		return;
 	}
 
-	else if(position == 0)
+	else if (position == 0)
 	{
 		head = head->next;
 	}
@@ -137,9 +137,9 @@ void LinkedList::remove(int position)
 	{
 		int count = 0;
 
-		ListNode *new_ = head, *old;
+		ListNode* new_ = head, * old;
 
-		while(new_ != NULL && count != position)
+		while (new_ != NULL && count != position)
 		{
 			old = new_;
 			new_ = new_->next;
@@ -148,6 +148,7 @@ void LinkedList::remove(int position)
 
 		if(new_)
 		{
+			old = head;
 			old->next = new_->next;
 			delete new_;
 		}
@@ -156,18 +157,18 @@ void LinkedList::remove(int position)
 
 bool LinkedList::isMember(double x)
 {
-	if(head == NULL)
+	if (head == NULL)
 	{
 		return false;
 	}
 
 	else
 	{
-		ListNode *aptr = head;
+		ListNode* aptr = head;
 
-		while(aptr != NULL)
+		while (aptr != NULL)
 		{
-			if(aptr->value == x)
+			if (aptr->value == x)
 				return true;
 			aptr = aptr->next;
 		}
@@ -178,7 +179,7 @@ bool LinkedList::isMember(double x)
 
 int LinkedList::search(double x)
 {
-	if(head == NULL)
+	if (head == NULL)
 	{
 		return -1;
 	}
@@ -187,11 +188,11 @@ int LinkedList::search(double x)
 	{
 		int count = 0;
 
-		ListNode *aptr = head;
+		ListNode* aptr = head;
 
-		while(aptr != NULL)
+		while (aptr != NULL)
 		{
-			if(aptr->value == x)
+			if (aptr->value == x)
 				return count;
 			aptr = aptr->next;
 			count++;
@@ -203,9 +204,9 @@ int LinkedList::search(double x)
 
 void LinkedList::insert(double x, int position)
 {
-	ListNode *new_, *old;
+	ListNode* new_, * old;
 
-	if(head == NULL)
+	if (head == NULL)
 	{
 		head = new ListNode(x);
 	}
@@ -214,33 +215,33 @@ void LinkedList::insert(double x, int position)
 	{
 		new_ = head;
 
-		int count = 0; 
+		int count = 0;
 
-		while(new_ != NULL && count != position)
+		while (new_ != NULL && count != position)
 		{
 			old = new_;
 			new_ = new_->next;
 			count++;
 		}
-
+		old = head;
 		old->next = new ListNode(x, new_);
 	}
 }
 
 void LinkedList::print()
 {
-	if(head == NULL)
+	if (head == NULL)
 	{
 		return;
 	}
 
 	else
 	{
-		ListNode *aptr = head;
+		ListNode* aptr = head;
 
 		cout << fixed << showpoint << setprecision(1);
 
-		while(aptr != NULL)
+		while (aptr != NULL)
 		{
 			cout << aptr->value << "  ";
 
@@ -280,4 +281,6 @@ int main()
 
 	cout << "\nThese are the value in the list:" << endl;
 	list.print();
+
+	system("Pause");
 }
